@@ -1,6 +1,4 @@
-Here’s a clean, **long list of Google Dorks** without emojis, organized by category, ideal for use directly in Firefox or any browser's address/search bar.
 
----
 
 ## Login Pages & Admin Panels
 
