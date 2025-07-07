@@ -1,211 +1,231 @@
 
 
-## Login Pages & Admin Panels
-
+### Authentication Interfaces 
 ```
-inurl:admin
-inurl:admin/login
-inurl:adminpanel
-intitle:"admin panel"
-intitle:"login page"
-inurl:cpanel
-intitle:"Control Panel" inurl:admin
-inurl:dashboard
-inurl:wp-admin
-inurl:administrator
-inurl:userlogin
-inurl:login.jsp
-```
-
----
-
-## Exposed Passwords & Credentials
-
-```
-intext:"password" filetype:log
-intext:"password=" ext:env | ext:ini | ext:conf
-filetype:env DB_PASSWORD
-intext:"Authorization: Basic"
-filetype:xml intext:"password"
-intext:"ftp" intext:"password"
-filetype:txt intext:"password"
-filetype:xls intext:"username" intext:"password"
-filetype:log intext:"pass"
-inurl:"config.php" "DB_PASSWORD"
-```
-
----
-
-## Directory Listings & File Indexes
-
-```
-intitle:"index of /"
-intitle:"index of" +passwd
-intitle:"index of" +secret
-intitle:"index of" +.git
-intitle:"index of" +/config
-intitle:"index of" +/backup
-intitle:"index of" +/private
-intitle:"index of" +/uploads
-intitle:"index of" +/files
+inurl:/admin/login.php
+inurl:/administrator/index.php
+inurl:/wp-admin/admin-ajax.php
+intitle:"Login" inurl:/cms/
+inurl:/user/login ext:aspx
+inurl:/console/login.do
+inurl:/Account/Login ext:cshtml
+inurl:/admin/auth/login
+inurl:/admincp/login.php
+inurl:/_admin/login.aspx
+inurl:/manager/html
+inurl:/umbraco/login.aspx
+inurl:/siteadmin/login.aspx
+inurl:/admin123/login.php
+inurl:/admin_area/login
+inurl:/adminpanel/login.jsp
+inurl:/admin/login.asp
+inurl:/admin/account/login
+inurl:/admin/login.html
+inurl:/admincenter/login
+inurl:/admin/login.action
+inurl:/admin/index.php?route=common/login
+inurl:/admin/login.jsp?msg=invalid
+inurl:/admin/login?redirect_to=
+inurl:/admin/login?error=1
+inurl:/admin/login?failed=true
+inurl:/admin/login?ReturnUrl=
+inurl:/admin/login?denied
+inurl:/admin/login?expired
+inurl:/admin/login?session=expired
 ```
 
----
-
-## Configuration Files & Source Code
-
+### Database & Configuration Files 
 ```
-filetype:conf apache
-filetype:conf nginx
-filetype:env intext:"SECRET_KEY"
-filetype:json intext:"aws_access_key_id"
-filetype:xml intext:"configuration"
-filetype:ini intext:"smtp"
-filetype:yaml intext:"token"
-filetype:php inurl:config
-filetype:rb inurl:secrets
-inurl:config.json
-```
-
----
-
-## Leaked Documents & Sensitive Data
-
-```
-filetype:pdf "confidential"
-filetype:doc "internal use only"
-filetype:docx "restricted"
-filetype:xls intext:"salary"
-filetype:xlsx intext:"budget"
-filetype:txt intext:"secret"
-filetype:csv intext:"email"
-filetype:xls intext:"employee list"
-```
-
----
-
-## Database Exposures
-
-```
-filetype:sql "INSERT INTO"
-filetype:sql intext:"DROP TABLE"
-filetype:sql intext:"password"
-filetype:db
-filetype:dbf
-filetype:mdb
-inurl:wp-content/uploads *.sql
-filetype:bak intext:"database"
+filetype:env DB_USERNAME DB_PASSWORD
+filetype:ini "mysql_connect"
+filetype:properties "jdbc.password"
+filetype:yml "spring.datasource.password"
+filetype:conf "pass =" site:github.com
+filetype:config "connectionString" "Password="
+filetype:json "apiSecret" -git -sample -test
+filetype:sql "CREATE USER" "IDENTIFIED BY"
+filetype:log "Failed password for"
+filetype:xml "mail.password"
+filetype:sh "export PGPASSWORD="
+filetype:php "define('DB_PASS'"
+filetype:pl "DBI->connect('DBI:mysql"
+filetype:rb "establish_connection password:"
+filetype:py "SQLALCHEMY_DATABASE_URI"
+filetype:java "DataSource.setPassword"
+filetype:jsp "jdbc:mysql://"
+filetype:asp "conn.open \"Driver={SQL Server}"
+filetype:aspx "SqlDataSource.ConnectionString"
+filetype:bak intext:"db_user" ext:sql
+filetype:inc "mysql_pconnect"
+filetype:txt "ftp://user:pass@"
+filetype:reg "Windows Registry Editor" "Password"
+filetype:inf "DefaultPassword"
+filetype:ldif "userPassword::"
+filetype:vbs "strPassword ="
+filetype:ps1 "$cred = Get-Credential"
+filetype:bat "sqlcmd -U" -" -P"
+filetype:cfg "oauth_token_secret"
+filetype:yaml "aws_secret_access_key"
+filetype:toml "secret_key_base"
+filetype:tf "aws_secret_key"
+filetype:ppk "Private-Lines:"
+filetype:pem "BEGIN RSA PRIVATE KEY"
+filetype:key "-----BEGIN PRIVATE KEY-----"
+filetype:cer "Subject:" "Issuer:"
+filetype:jks "keystore password"
+filetype:pfx "PKCS12 Certificate"
 ```
 
----
-
-## Source Code Leaks
-
+### Version Control & Source Code 
 ```
-site:github.com "SECRET_KEY"
-site:gitlab.com intext:"api_key"
-filetype:py intext:"token"
-filetype:js intext:"apikey"
-filetype:json intext:"private_key"
-filetype:php intext:"define('DB_PASSWORD'"
-filetype:env intext:"JWT_SECRET"
-```
-
----
-
-## Public IP Cameras / CCTV
-
-```
-inurl:"view/view.shtml"
-inurl:"/webcapture.jpg?"
-inurl:top.htm inurl:currenttime
-intitle:"Live View / - AXIS"
-inurl:/axis-cgi/jpg/image.cgi
-intitle:"IP Camera" inurl:video.cgi
-```
-
----
-
-## Router & Device Interfaces
-
-```
-intitle:"router login"
-inurl:8080
-inurl:8443
-intitle:"D-Link"
-intitle:"Netgear"
-intitle:"TP-Link"
-inurl:setup.cgi
-inurl:guest_network
+intitle:"index of" /.git/HEAD
+intitle:"index of" /.svn/entries
+intitle:"index of" /.hg/store
+intitle:"index of" /CVS/Root
+filetype:gitignore "secret" -example
+inurl:".git/config" intitle:"index of"
+inurl:"/.git/logs/HEAD"
+inurl:"/bitbucket/rest/api" -atlassian
+inurl:"/api/v3/repos" ext:json
+inurl:"/raw/" ext:java | ext:py | ext:php
+inurl:"/blob/master/" ext:env
+inurl:"/commit/" ext:diff
+inurl:"/pull/" ext:patch
+inurl:"/releases/download/"
+inurl:"/tree/master/" ext:md
+inurl:"/raw/master/package.json"
+inurl:"/raw/master/config/"
+inurl:"/raw/master/src/" ext:js
+inurl:"/.github/workflows/" ext:yml
+inurl:"/package-lock.json" "dependencies"
+inurl:"/pom.xml" "properties"
+inurl:"/build.gradle" "repositories"
+inurl:"/requirements.txt" "pkg-resources"
+inurl:"/composer.json" "require-dev"
+inurl:"/Dockerfile" "ENV" "PASSWORD"
 ```
 
----
-
-## Internal Portals & Staging Sites
-
+### API Endpoints & Developer Tools 
 ```
-site:*.example.com -www "staging"
-site:*.example.com -www "internal"
-site:*.example.com -www "dev"
-site:*.example.com -www "test"
-inurl:test
-inurl:staging
-inurl:dev
-inurl:/private
-```
-
----
-
-## Backup Files & Logs
-
-```
-filetype:log
-filetype:bak
-filetype:old
-filetype:zip inurl:backup
-filetype:tar.gz inurl:db
-filetype:7z inurl:site
-filetype:sql.bak
-filetype:backup intext:"password"
-```
-
----
-
-## Cloud & API Key Leaks
-
-```
-filetype:json intext:"api_key"
-filetype:env intext:"AWS_SECRET_ACCESS_KEY"
-filetype:yml intext:"token"
-intext:"Authorization: Bearer"
-site:pastebin.com "api_key"
-site:github.com intext:"slack_token"
+inurl:"/swagger-ui.html"
+inurl:"/v2/api-docs" ext:json
+inurl:"/graphql" "query {"
+inurl:"/api/v1/users" ext:json
+inurl:"/oauth/token" ext:json
+inurl:"/actuator/health" ext:json
+inurl:"/phpinfo.php" intitle:"phpinfo()"
+inurl:"/debug/default/view"
+inurl:"/_profiler/phpinfo"
+inurl:"/web-console/"
+inurl:"/jmx-console/"
+inurl:"/adminer.php" intitle:"Adminer"
+inurl:"/phpMyAdmin/" intitle:"phpMyAdmin"
+inurl:"/pgadmin/" intitle:"pgAdmin"
+inurl:"/redis-admin/"
+inurl:"/elasticsearch/_plugin/head/"
+inurl:"/kibana/app/kibana"
+inurl:"/druid/index.html"
+inurl:"/hawtio/login"
+inurl:"/solr/admin/cores"
+inurl:"/manager/status" ext:xml
+inurl:"/jenkins/script"
+inurl:"/nexus/#browse"
+inurl:"/sonarqube/api"
+inurl:"/artifactory/api"
+inurl:"/gitlab/api/v4"
+inurl:"/teamcity/app/rest"
+inurl:"/v1/keys?recursive=true"
+inurl:"/api/v1/namespaces/default/pods"
+inurl:"/api/v1/nodes" ext:json
 ```
 
----
-
-## OSINT & Info Leak
-
+### Industrial & IoT Systems 
 ```
-site:pastebin.com "confidential"
-site:github.com "do not share"
-site:trello.com "password"
-site:linkedin.com/in "admin"
-site:*.gov filetype:xls
-site:*.edu filetype:pdf
+intitle:"SCADA" inurl:/login
+intitle:"HMI" inurl:/Runtime
+inurl:"/portal/DeviceList"
+inurl:"/webvisu.htm" intitle:"WebVisu"
+inurl:"/Portal/Portal.mwsl"
+inurl:"/ViewerFrame?Mode="
+inurl:"/snap.jpg" intitle:"Camera"
+inurl:"/videostream.cgi" intitle:"MJPG"
+inurl:"/cgi-bin/CGIProxy.fcgi"
+inurl:"/axis-cgi/com/ptz.cgi"
+inurl:"/ISAPI/Streaming/channels/"
+inurl:"/onvif/device_service"
+inurl:"/cgi-bin/snapshot.cgi"
+inurl:"/webcapture.jpg?stream="
+inurl:"/live/index2.html"
+inurl:"/mobile.html" intitle:"IP Camera"
+inurl:"/cgi-bin/viewer/video.jpg"
+inurl:"/camera-cgi/admin/param.cgi"
+inurl:"/config/system.ini"
+inurl:"/cgi-bin/nobody/Machine.cgi"
+inurl:"/cgi-bin/hi3510/param.cgi"
+inurl:"/cgi-bin/net/Network.cgi"
+inurl:"/cgi-bin/guest/Video.cgi"
+inurl:"/cgi-bin/viewer/get_status.cgi"
+inurl:"/cgi-bin/luci/admin/status"
 ```
 
----
-
-## Recon Shortcuts (site-specific)
-
+### Cloud & DevOps 
 ```
-site:target.com inurl:login
-site:target.com filetype:sql
-site:target.com intitle:index.of
-site:target.com inurl:admin
-site:target.com filetype:env
+inurl:"/aws/credentials" ext:ini
+inurl:"/.aws/credentials" ext:txt
+filetype:tfvars "access_key"
+inurl:"/metadata/v1/" ext:json
+inurl:"/latest/meta-data/iam/"
+inurl:"/storage/v1/b/" ext:json
+inurl:"/computeMetadata/v1/"
+inurl:"/secretsmanager/listsecrets"
+inurl:"/v1/secret/" ext:json
+inurl:"/api/v1/namespaces/kube-system/pods"
+inurl:"/apis/apps/v1/deployments"
+inurl:"/v2/_catalog" ext:json
+inurl:"/v1.32/containers/json"
+inurl:"/api/v1beta1/namespaces"
+inurl:"/api/v1/services"
+inurl:"/api/v1/pods" ext:json
+inurl:"/api/v1/nodes" ext:yaml
+inurl:"/v3/project/" ext:json
+inurl:"/v2.0/tokens" ext:json
+inurl:"/v1/auth/tokens" ext:xml
 ```
 
----
+### Financial & Retail Systems 
+```
+inurl:"/pos/printreceipt.php"
+inurl:"/payment/process" ext:do
+inurl:"/gateway/transaction"
+inurl:"/merchant/account"
+inurl:"/api/v1/transactions"
+inurl:"/checkout/cart" ext:asp
+inurl:"/account/statement"
+inurl:"/transfer/confirm"
+inurl:"/invoice/download"
+inurl:"/pos/printreceipt.php"
+inurl:"/reports/financial"
+inurl:"/account/balance"
+inurl:"/api/v1/merchants"
+inurl:"/v1/payments/"
+inurl:"/transaction/details"
+```
 
+### Healthcare Systems 
+```
+inurl:"/ehr/patient/view"
+inurl:"/emr/api/patients"
+inurl:"/his/labresults"
+inurl:"/phr/records"
+inurl:"/cerner/patientportal"
+inurl:"/epic/MyChart"
+inurl:"/meditech/webpatient"
+inurl:"/pharmacy/orders"
+inurl:"/lab/results/view"
+inurl:"/radiology/images"
+inurl:"/api/fhir/Patient"
+inurl:"/dicom/viewer"
+inurl:"/hl7/listener"
+inurl:"/clinical/notes"
+inurl:"/immunization/records"
+```
