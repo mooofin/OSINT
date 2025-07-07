@@ -229,3 +229,87 @@ inurl:"/hl7/listener"
 inurl:"/clinical/notes"
 inurl:"/immunization/records"
 ```
+Here are 50 highly specialized Google Dork queries for uncovering niche vulnerabilities and hidden systems:
+
+### Industrial Control Systems (10)
+```
+inurl:/scada/WebHMI.html
+intitle:"Wonderware InTouch" inurl:/Runtime
+inurl:/RSLinxRemoteOPC -demo
+inurl:/config/iop.xsl (Siemens)
+inurl:/Portal/Portal.mwsl (Beckhoff)
+inurl:/ccw/main.aspx (Rockwell)
+inurl:/CimWeb/ (GE Cimplicity)
+inurl:/Vijeo-Citect (Schneider)
+filetype:ccp (CoDeSys projects)
+inurl:/webvisu (WAGO controllers)
+```
+
+### Medical Imaging Systems (8)
+```
+inurl:/dicom/query? (PACS)
+inurl:/orthanc/instances (DICOM servers)
+inurl:/weasis-pacs-connector/
+intitle:"DICOM Query Retieve" -demo
+inurl:/api/v1/studies ext:json
+inurl:/ohif/viewer?studyUIDs=
+inurl:/pacsgateway/dicom.ashx
+filetype:wlms (DICOM worklists)
+```
+
+### Aviation & Maritime (7)
+```
+inurl:/fms/flightdata (FMS systems)
+inurl:/aisweb/ais (AIS tracking)
+inurl:/ecdis/ (ECDIS chart systems)
+inurl:/jrc/radar (Radar systems)
+inurl:/ams2/ (Aircraft maintenance)
+filetype:flt (Flight plan files)
+inurl:/transas/ (Navigation systems)
+```
+
+### Automotive Systems (5)
+```
+inurl:/xentry/aftertreatment (Mercedes)
+inurl:/tech2win/ (GM diagnostics)
+inurl:/idsclient/ (Ford diagnostics)
+filetype:prg (ECU flash files)
+inurl:/asm/ (Audi Service Mode)
+```
+
+### Building Automation (5)
+```
+inurl:/niagara/ax (Tridium)
+inurl:/desigo/ (Siemens)
+inurl:/eikon/ (Honeywell)
+inurl:/continuum/ (Automated Logic)
+inurl:/metasys/ (Johnson Controls)
+```
+
+### Scientific Research (5)
+```
+inurl:/lims/sample (Lab systems)
+inurl:/epicore/ (Clinical trials)
+filetype:cdf (NASA data)
+inurl:/irisws/ (Seismic data)
+inurl:/helioviewer/api/ (Solar imaging)
+```
+
+### Military & Defense (5)
+```
+inurl:/falconview/ (Mapping)
+inurl:/jalc/ (Joint systems)
+filetype:afm (Flight manuals)
+inurl:/dcgs/ (Surveillance)
+inurl:/milstar/ (Satellite coms)
+```
+
+### Space Systems (5)
+```
+inurl:/ccsds/ (Space protocols)
+inurl:/omms/ (NASA maintenance)
+filetype:eph (Ephemeris data)
+inurl:/soc/ (Spacecraft ops)
+inurl:/tletrak/ (Satellite tracking)
+```
+
